@@ -35,7 +35,7 @@ Paste your job description inside jd.txt
 python matcher.py
 
 ## 📷 Sample Output
-![Screenshot 2025-05-29 172238](https://github.com/user-attachments/assets/a762b729-7dd9-4efd-af1f-11523ab51196)
+![Screenshot 2025-05-29 175517](https://github.com/user-attachments/assets/fc7aeea3-07a2-4867-afcf-26dac7f45913)
 
 
 ## 🎯 Future Scope
