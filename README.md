@@ -34,6 +34,12 @@ Paste your job description inside jd.txt
 🔹 4. Run the script
 python matcher.py
 
+## Command to run the Project
+- python3 -m pip install --upgrade pip  # If pip is not upgraded
+- pip install streamlit pandas scikit-learn pymupdf nltk # if requirements.txt doesn't work for you
+- streamlit run Resume_Matcher.py
+- There you go add job_description.txt file and resume.pdf files. 
+
 ## 📷 Sample Output
 ![Screenshot 2025-05-29 175517](https://github.com/user-attachments/assets/fc7aeea3-07a2-4867-afcf-26dac7f45913)
 
