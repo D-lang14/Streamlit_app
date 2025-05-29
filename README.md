@@ -37,6 +37,9 @@ python matcher.py
 ## 📷 Sample Output
 ![Screenshot 2025-05-29 175517](https://github.com/user-attachments/assets/fc7aeea3-07a2-4867-afcf-26dac7f45913)
 
+This is how it looks on Streamlit.
+![Screenshot 2025-05-29 175652](https://github.com/user-attachments/assets/502a4bbf-65ea-4e7e-b3a4-6118f474bf00)
+
 
 ## 🎯 Future Scope
 - Add a web-based UI using Streamlit
