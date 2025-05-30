@@ -21,24 +21,25 @@ This project automatically matches candidate resumes against a given job descrip
 
 ## 🚀 Getting Started
 🔹 1. Clone the repo
+```
 git clone https://github.com/your-username/resume-matcher.git
 cd resume-matcher
-
+```
 🔹 2. Install dependencies
+```
+# Step 1: Upgrade pip (optional, if pip is outdated)
+python3 -m pip install --upgrade pip
+
+# Step 2: Install dependencies
 pip install -r requirements.txt
-
-🔹 3. Add resumes & job description
-Place your resumes inside the resume/ folder
-Paste your job description inside jd.txt
-
-🔹 4. Run the script
-python matcher.py
-
-## Command to run the Project
-- python3 -m pip install --upgrade pip  # If pip is not upgraded
-- pip install streamlit pandas scikit-learn pymupdf nltk # if requirements.txt doesn't work for you
-- streamlit run Resume_Matcher.py
-- There you go add job_description.txt file and resume.pdf files. 
+# OR if the above doesn't work
+pip install streamlit pandas scikit-learn pymupdf nltk
+```
+🔹 3. Run the App
+```
+# Step 3: Run the app using Streamlit
+streamlit run Resume_Matcher.py
+```
 
 ## 📷 Sample Output
 ![Screenshot 2025-05-29 175517](https://github.com/user-attachments/assets/fc7aeea3-07a2-4867-afcf-26dac7f45913)
