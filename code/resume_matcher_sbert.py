@@ -10,7 +10,7 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Streamlit App for Multilingual Resume Matcher
-st.title("🌍 Multilingual Resume Matcher using SBERT")
+st.title("🌍 Resume Matcher using SBERT")
 
 # Upload JD
 jd_file = st.file_uploader("📄 Upload Job Description (txt)", type=["txt"])
