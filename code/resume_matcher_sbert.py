@@ -4,6 +4,7 @@ os.environ["STREAMLIT_WATCHER_IGNORE_PACKAGES"] = "1"
 import streamlit as st
 import re
 import fitz  # PyMuPDF
+import unicodedata
 import pandas as pd
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -21,6 +22,10 @@ resume_files = st.file_uploader("📑 Upload Resumes (pdf)", type=["pdf"], accep
 def extract_text(pdf_file):
     with fitz.open(stream=pdf_file.read(), filetype="pdf") as doc:
         return " ".join(page.get_text() for page in doc)
+
+# Normalize unicode characters
+def normalize_text(text):
+    return unicodedata.normalize("NFKC", text)
 
 # (Optional) Keyword extractor
 def extract_keywords(text):
