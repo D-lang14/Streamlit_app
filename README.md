@@ -1,22 +1,24 @@
-# 🤖 Resume Matcher App (TF-IDF + SBERT)
+# 🤖 Resume Matcher App (TF-IDF + SBERT + Multilingual)
 
-An intelligent resume matcher built with Streamlit. It supports **two powerful matching engines**:  
-1. **TF-IDF-based Matcher**  
-2. **SBERT (Sentence-BERT) Matcher** using pretrained transformer models for semantic understanding.
+An intelligent resume matcher built with Streamlit.  
+Supports **English, German, French, Hindi, Marathi**, and more – thanks to multilingual SBERT!
 
 ---
 
 ## 📂 Available Matching Modes
 
 ### 1. `app.py` – TF-IDF Matcher
-- Uses traditional TF-IDF vectorization and cosine similarity
-- Fast and lightweight
-- Good for keyword-based filtering
+- Traditional keyword-based filtering using TF-IDF + cosine similarity.
 
 ### 2. `sbert_resume_matcher.py` – SBERT Matcher
-- Uses `all-MiniLM-L6-v2` from `sentence-transformers`
-- Deep semantic understanding between resumes and job descriptions
-- Better for context-aware matching
+- Uses `sentence-transformers` to find semantically similar resumes.
+- Supports multilingual input using:
+
+```
+python
+from sentence_transformers import SentenceTransformer
+model = SentenceTransformer('distiluse-base-multilingual-cased-v1')
+```
 
 ---
 
@@ -27,6 +29,17 @@ An intelligent resume matcher built with Streamlit. It supports **two powerful m
 - Scikit-learn
 - Sentence-Transformers (SBERT)
 - PyPDF2 / pdfplumber for PDF parsing
+- unicodedata, langdetect (optional)
+
+---
+
+## 🌐 Supported Languages
+- English 🇬🇧
+- German 🇩🇪
+- French 🇫🇷
+- Hindi 🇮🇳
+- Marathi 🇮🇳
+- And 50+ more!
 
 ---
 
