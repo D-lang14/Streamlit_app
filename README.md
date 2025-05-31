@@ -1,29 +1,49 @@
-## 🧠 Project Title
-Resume Matcher – AI-Powered Resume Ranking Tool
+# 🤖 Resume Matcher App (TF-IDF + SBERT)
 
-## 📌 Description
-This project automatically matches candidate resumes against a given job description (JD) using TF-IDF and keyword similarity techniques. It helps recruiters shortlist the most relevant profiles quickly and efficiently.
+An intelligent resume matcher built with Streamlit. It supports **two powerful matching engines**:  
+1. **TF-IDF-based Matcher**  
+2. **SBERT (Sentence-BERT) Matcher** using pretrained transformer models for semantic understanding.
 
-## 🛠️ Features
-- 📄 Extracts text from PDF resumes using PyMuPDF
-- 🤖 Compares resumes to JD using TF-IDF and cosine similarity
-- 🔍 Highlights matched keywords
-- 📊 Ranks resumes by relevance score
-- 🧪 Optional Streamlit UI for quick testing (coming soon)
+---
 
-## 🔧 Technologies Used
-- Python 🐍
+## 📂 Available Matching Modes
+
+### 1. `app.py` – TF-IDF Matcher
+- Uses traditional TF-IDF vectorization and cosine similarity
+- Fast and lightweight
+- Good for keyword-based filtering
+
+### 2. `sbert_resume_matcher.py` – SBERT Matcher
+- Uses `all-MiniLM-L6-v2` from `sentence-transformers`
+- Deep semantic understanding between resumes and job descriptions
+- Better for context-aware matching
+
+---
+
+## 🧠 Tech Stack
+
+- Python 3.8+
+- Streamlit
 - Scikit-learn
-- pandas
-- PyMuPDF (fitz)
-- re (Regex)
-- Streamlit (optional UI)
+- Sentence-Transformers (SBERT)
+- PyPDF2 / pdfplumber for PDF parsing
+
+---
+
+## 📦 Installation
+
+```
+bash
+git clone https://github.com/your-username/resume-matcher.git
+cd resume-matcher
+pip install -r requirements.txt
+```
 
 ## 🚀 Getting Started
 🔹 1. Clone the repo
 ```
-git clone https://github.com/your-username/resume-matcher.git
-cd resume-matcher
+git clone 
+cd 
 ```
 🔹 2. Install dependencies
 ```
@@ -34,24 +54,30 @@ python3 -m pip install --upgrade pip
 pip install -r requirements.txt
 # OR if the above doesn't work
 pip install streamlit pandas scikit-learn pymupdf nltk
+# For SBERT
+pip install sentence_transformers
 ```
 🔹 3. Run the App
 ```
 # Step 3: Run the app using Streamlit
-streamlit run Resume_Matcher.py
+streamlit run resume_matcher_tfidf.py
+# or
+streamlit run resume_matcher_sbert.py
 ```
 
 ## 📷 Sample Output
-![Screenshot 2025-05-29 175517](https://github.com/user-attachments/assets/fc7aeea3-07a2-4867-afcf-26dac7f45913)
+![Screenshot 2025-05-31 181332](https://github.com/user-attachments/assets/081eadd4-4b66-489b-8ad1-21ae8aba882f)
 
-This is how it looks on Streamlit.
-![Screenshot 2025-05-29 175652](https://github.com/user-attachments/assets/502a4bbf-65ea-4e7e-b3a4-6118f474bf00)
+![Screenshot 2025-05-31 181349](https://github.com/user-attachments/assets/3edeacf7-1bb8-438f-a277-400ff5bf2376)
 
 
-## 🎯 Future Scope
-- Add a web-based UI using Streamlit
-- Support multiple job descriptions
-- Add NLP-based keyword extraction from JD
+## ✅ Features
+- Upload multiple resumes and job descriptions
+- Support for PDF and TXT
+- Similarity score ranking
+- Download CSV results
+- SBERT-based deep semantic matcher
+- DOCX support (coming soon)
 
 ## 🙋‍♂️ Author
 Disha Tarun Patil
