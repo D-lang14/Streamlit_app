@@ -9,34 +9,30 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Streamlit App for Resume Matcher using SBERT
-# Set up the Streamlit app
-st.title("🔍 Resume Matcher using SBERT")
+# Streamlit App for Multilingual Resume Matcher
+st.title("🌍 Multilingual Resume Matcher using SBERT")
 
 # Upload JD
 jd_file = st.file_uploader("📄 Upload Job Description (txt)", type=["txt"])
 # Upload multiple resumes
 resume_files = st.file_uploader("📑 Upload Resumes (pdf)", type=["pdf"], accept_multiple_files=True)
 
-# PDF text extraction
+# Extract text from PDF
 def extract_text(pdf_file):
     with fitz.open(stream=pdf_file.read(), filetype="pdf") as doc:
         return " ".join(page.get_text() for page in doc)
 
-# Normalize unicode characters
+# Normalize Unicode characters
 def normalize_text(text):
     return unicodedata.normalize("NFKC", text)
 
-# (Optional) Keyword extractor
+# Optional: Extract keywords from any language (basic version)
 def extract_keywords(text):
-    from nltk.corpus import stopwords
-    import nltk
-    nltk.download('stopwords', quiet=True)
-    stop_words = set(stopwords.words('english'))
-    return [w for w in re.findall(r'\b\w+\b', text.lower()) if w not in stop_words and len(w) > 2]
+    words = re.findall(r'\b\w+\b', text.lower())
+    return [w for w in words if len(w) > 2]  # Filter very short words
 
-# Core SBERT Matcher Function
-def match_texts(list_a, list_b, model_name="all-MiniLM-L6-v2"):
+# SBERT Matcher (multilingual)
+def match_texts(list_a, list_b, model_name="distiluse-base-multilingual-cased-v1"):
     model = SentenceTransformer(model_name)
     emb_a = model.encode(list_a, convert_to_tensor=True, device='cpu')
     emb_b = model.encode(list_b, convert_to_tensor=True, device='cpu')
@@ -44,17 +40,17 @@ def match_texts(list_a, list_b, model_name="all-MiniLM-L6-v2"):
     return sim_matrix
 
 if jd_file and resume_files:
-    # Read job description
-    jd_text = jd_file.read().decode("utf-8")
-    
-    # Extract resume texts
-    resume_texts = [extract_text(file) for file in resume_files]
+    # Read & normalize JD
+    jd_text = normalize_text(jd_file.read().decode("utf-8"))
+
+    # Read, extract, normalize resumes
+    resume_texts = [normalize_text(extract_text(file)) for file in resume_files]
     resume_names = [file.name for file in resume_files]
 
-    # Semantic Similarity using SBERT
-    similarity_scores = match_texts([jd_text], resume_texts)[0]  # Single JD vs multiple resumes
+    # Compute similarity
+    similarity_scores = match_texts([jd_text], resume_texts)[0]
 
-    # Keyword Matching (optional)
+    # Basic keyword match
     jd_keywords = extract_keywords(jd_text)
     keyword_matches = []
     for res_text in resume_texts:
@@ -62,7 +58,7 @@ if jd_file and resume_files:
         matches = set(jd_keywords).intersection(set(res_keywords))
         keyword_matches.append(matches)
 
-    # Final DataFrame
+    # Results DataFrame
     df = pd.DataFrame({
         'Resume Name': resume_names,
         'Similarity Score': similarity_scores,
